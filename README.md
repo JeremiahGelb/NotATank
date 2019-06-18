@@ -3,8 +3,16 @@ It's not a tank
 
 Hey guys this is what I did so far (on ubuntu 16.04 but I think we will switch to raspbian??)
 
-1. Install grpc
+~~1. Install grpc~~
 
-https://github.com/grpc/grpc/blob/master/BUILDING.md
+~~https://github.com/grpc/grpc/blob/master/BUILDING.md~~
+
+
+To get a grpc env working, use docker-compose:
+```bash
+docker-compose run grpcpp
+
+cd src
+```
 
 

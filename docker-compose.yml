@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  grpcpp:
+    image: grpc/cxx
+    volumes:
+      - ./:/src
