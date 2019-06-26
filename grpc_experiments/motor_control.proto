@@ -1,0 +1,25 @@
+syntax = "proto3";
+service MotorControl{
+    rpc SetCannonPosition(Coordinates) returns (Status) {}
+    rpc FireCannon(Request) returns (Status) {}
+    rpc LoadCannon(Request) returns (Status) {}
+    rpc GetCannonInfo(Request) returns (CannonInfo) {}
+
+}
+message Coordinates{
+    float theta = 1; // Angle from z axis to barrel 0 is straight up
+    float phi = 2; // Angle in x/y plane (0 is straight forward)
+}
+
+message Status{
+    int32 status_code = 1;
+}
+
+message CannonInfo{
+    Coordinates coords = 1;
+    bool loaded = 2;
+}
+
+message Request{
+    bool please = 1; // dumb
+}
