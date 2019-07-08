@@ -1,9 +1,7 @@
 syntax = "proto3";
 service MotorControl{
-    rpc SetCannonPosition(Coordinates) returns (Status) {}
-    rpc FireCannon(Request) returns (Status) {}
-    rpc LoadCannon(Request) returns (Status) {}
-    rpc GetCannonInfo(Request) returns (CannonInfo) {}
+    rpc SetCannonPosition(Coordinates) returns (MotorControlResponse) {}
+    rpc GetCannonInfo(MotorControlRequest) returns (CannonInfo) {}
 
 }
 message Coordinates{
@@ -11,15 +9,16 @@ message Coordinates{
     float phi = 2; // Angle in x/y plane (0 is straight forward)
 }
 
-message Status{
-    int32 status_code = 1;
-}
-
 message CannonInfo{
     Coordinates coords = 1;
     bool loaded = 2;
 }
 
-message Request{
-    bool please = 1; // dumb
+message MotorControlResponse{
+    bool accepted = 1;
+}
+
+message MotorControlRequest{
+    // This is just a placeholder so that getCannonInfo can have args
+    bool is_authorized = 1; // Are void functions possible?
 }
