@@ -15,4 +15,13 @@ docker-compose run grpcpp
 cd src
 ```
 
+Here's how to fail to build what I have so far
+```bash
+>>> get into the docker
+>>> go to src directory
+./build.sh
+make
+```
+
+
 
