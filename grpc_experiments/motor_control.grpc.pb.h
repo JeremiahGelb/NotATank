@@ -31,89 +31,51 @@ class MotorControl final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::Status* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> AsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(AsyncSetCannonPositionRaw(context, request, cq));
+    virtual ::grpc::Status SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::MotorControlResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>> AsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>>(AsyncSetCannonPositionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> PrepareAsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(PrepareAsyncSetCannonPositionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>> PrepareAsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>>(PrepareAsyncSetCannonPositionRaw(context, request, cq));
     }
-    virtual ::grpc::Status FireCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> AsyncFireCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(AsyncFireCannonRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> PrepareAsyncFireCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(PrepareAsyncFireCannonRaw(context, request, cq));
-    }
-    virtual ::grpc::Status LoadCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> AsyncLoadCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(AsyncLoadCannonRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>> PrepareAsyncLoadCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Status>>(PrepareAsyncLoadCannonRaw(context, request, cq));
-    }
-    virtual ::grpc::Status GetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::CannonInfo* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>> AsyncGetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status GetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::CannonInfo* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>> AsyncGetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>>(AsyncGetCannonInfoRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>> PrepareAsyncGetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>> PrepareAsyncGetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>>(PrepareAsyncGetCannonInfoRaw(context, request, cq));
     }
   private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* AsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* PrepareAsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* AsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Status>* PrepareAsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>* AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>* PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>* AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MotorControlResponse>* PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>* AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CannonInfo>* PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
-    ::grpc::Status SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::Status* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> AsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(AsyncSetCannonPositionRaw(context, request, cq));
+    ::grpc::Status SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::MotorControlResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>> AsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>>(AsyncSetCannonPositionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> PrepareAsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(PrepareAsyncSetCannonPositionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>> PrepareAsyncSetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>>(PrepareAsyncSetCannonPositionRaw(context, request, cq));
     }
-    ::grpc::Status FireCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> AsyncFireCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(AsyncFireCannonRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> PrepareAsyncFireCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(PrepareAsyncFireCannonRaw(context, request, cq));
-    }
-    ::grpc::Status LoadCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> AsyncLoadCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(AsyncLoadCannonRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>> PrepareAsyncLoadCannon(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Status>>(PrepareAsyncLoadCannonRaw(context, request, cq));
-    }
-    ::grpc::Status GetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::CannonInfo* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>> AsyncGetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status GetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::CannonInfo* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>> AsyncGetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>>(AsyncGetCannonInfoRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>> PrepareAsyncGetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>> PrepareAsyncGetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CannonInfo>>(PrepareAsyncGetCannonInfoRaw(context, request, cq));
     }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    ::grpc::ClientAsyncResponseReader< ::Status>* AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Status>* PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Status>* AsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Status>* PrepareAsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Status>* AsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Status>* PrepareAsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::CannonInfo>* AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::CannonInfo>* PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>* AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MotorControlResponse>* PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::CannonInfo>* AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::CannonInfo>* PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SetCannonPosition_;
-    const ::grpc::internal::RpcMethod rpcmethod_FireCannon_;
-    const ::grpc::internal::RpcMethod rpcmethod_LoadCannon_;
     const ::grpc::internal::RpcMethod rpcmethod_GetCannonInfo_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -122,10 +84,8 @@ class MotorControl final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::Status* response);
-    virtual ::grpc::Status FireCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response);
-    virtual ::grpc::Status LoadCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response);
-    virtual ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::Request* request, ::CannonInfo* response);
+    virtual ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::MotorControlResponse* response);
+    virtual ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::MotorControlRequest* request, ::CannonInfo* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SetCannonPosition : public BaseClass {
@@ -139,52 +99,12 @@ class MotorControl final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::Status* response) final override {
+    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::MotorControlResponse* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetCannonPosition(::grpc::ServerContext* context, ::Coordinates* request, ::grpc::ServerAsyncResponseWriter< ::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSetCannonPosition(::grpc::ServerContext* context, ::Coordinates* request, ::grpc::ServerAsyncResponseWriter< ::MotorControlResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_FireCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithAsyncMethod_FireCannon() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_FireCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status FireCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestFireCannon(::grpc::ServerContext* context, ::Request* request, ::grpc::ServerAsyncResponseWriter< ::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_LoadCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithAsyncMethod_LoadCannon() {
-      ::grpc::Service::MarkMethodAsync(2);
-    }
-    ~WithAsyncMethod_LoadCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LoadCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestLoadCannon(::grpc::ServerContext* context, ::Request* request, ::grpc::ServerAsyncResponseWriter< ::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -193,21 +113,21 @@ class MotorControl final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetCannonInfo() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(1);
     }
     ~WithAsyncMethod_GetCannonInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::Request* request, ::CannonInfo* response) final override {
+    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::MotorControlRequest* request, ::CannonInfo* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetCannonInfo(::grpc::ServerContext* context, ::Request* request, ::grpc::ServerAsyncResponseWriter< ::CannonInfo>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestGetCannonInfo(::grpc::ServerContext* context, ::MotorControlRequest* request, ::grpc::ServerAsyncResponseWriter< ::CannonInfo>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetCannonPosition<WithAsyncMethod_FireCannon<WithAsyncMethod_LoadCannon<WithAsyncMethod_GetCannonInfo<Service > > > > AsyncService;
+  typedef WithAsyncMethod_SetCannonPosition<WithAsyncMethod_GetCannonInfo<Service > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_SetCannonPosition : public BaseClass {
    private:
@@ -220,41 +140,7 @@ class MotorControl final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_FireCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithGenericMethod_FireCannon() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_FireCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status FireCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_LoadCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithGenericMethod_LoadCannon() {
-      ::grpc::Service::MarkMethodGeneric(2);
-    }
-    ~WithGenericMethod_LoadCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LoadCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
+    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::MotorControlResponse* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -265,13 +151,13 @@ class MotorControl final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetCannonInfo() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(1);
     }
     ~WithGenericMethod_GetCannonInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::Request* request, ::CannonInfo* response) final override {
+    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::MotorControlRequest* request, ::CannonInfo* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -283,58 +169,18 @@ class MotorControl final {
    public:
     WithStreamedUnaryMethod_SetCannonPosition() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler< ::Coordinates, ::Status>(std::bind(&WithStreamedUnaryMethod_SetCannonPosition<BaseClass>::StreamedSetCannonPosition, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::Coordinates, ::MotorControlResponse>(std::bind(&WithStreamedUnaryMethod_SetCannonPosition<BaseClass>::StreamedSetCannonPosition, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetCannonPosition() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::Status* response) final override {
+    ::grpc::Status SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::MotorControlResponse* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetCannonPosition(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::Coordinates,::Status>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_FireCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithStreamedUnaryMethod_FireCannon() {
-      ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler< ::Request, ::Status>(std::bind(&WithStreamedUnaryMethod_FireCannon<BaseClass>::StreamedFireCannon, this, std::placeholders::_1, std::placeholders::_2)));
-    }
-    ~WithStreamedUnaryMethod_FireCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status FireCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedFireCannon(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::Request,::Status>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_LoadCannon : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service *service) {}
-   public:
-    WithStreamedUnaryMethod_LoadCannon() {
-      ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler< ::Request, ::Status>(std::bind(&WithStreamedUnaryMethod_LoadCannon<BaseClass>::StreamedLoadCannon, this, std::placeholders::_1, std::placeholders::_2)));
-    }
-    ~WithStreamedUnaryMethod_LoadCannon() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status LoadCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) final override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedLoadCannon(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::Request,::Status>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSetCannonPosition(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::Coordinates,::MotorControlResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetCannonInfo : public BaseClass {
@@ -342,23 +188,23 @@ class MotorControl final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetCannonInfo() {
-      ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::internal::StreamedUnaryHandler< ::Request, ::CannonInfo>(std::bind(&WithStreamedUnaryMethod_GetCannonInfo<BaseClass>::StreamedGetCannonInfo, this, std::placeholders::_1, std::placeholders::_2)));
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler< ::MotorControlRequest, ::CannonInfo>(std::bind(&WithStreamedUnaryMethod_GetCannonInfo<BaseClass>::StreamedGetCannonInfo, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetCannonInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::Request* request, ::CannonInfo* response) final override {
+    ::grpc::Status GetCannonInfo(::grpc::ServerContext* context, const ::MotorControlRequest* request, ::CannonInfo* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetCannonInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::Request,::CannonInfo>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetCannonInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MotorControlRequest,::CannonInfo>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetCannonPosition<WithStreamedUnaryMethod_FireCannon<WithStreamedUnaryMethod_LoadCannon<WithStreamedUnaryMethod_GetCannonInfo<Service > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SetCannonPosition<WithStreamedUnaryMethod_GetCannonInfo<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetCannonPosition<WithStreamedUnaryMethod_FireCannon<WithStreamedUnaryMethod_LoadCannon<WithStreamedUnaryMethod_GetCannonInfo<Service > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetCannonPosition<WithStreamedUnaryMethod_GetCannonInfo<Service > > StreamedService;
 };
 
 

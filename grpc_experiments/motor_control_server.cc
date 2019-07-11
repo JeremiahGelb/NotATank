@@ -7,11 +7,12 @@
 #include "examples/protos/motor_control.grpc.pb.h"
 #include <random>
 #include <vector>
+#include <iostream>
 
 class MotorControlImpl final : public MotorControl:Service {
     grpc::Status GetCannonInfo(grpc::ServerContext* context, const MotorControlRequest* request,
                                CannonInfo * info) override {
-        //request variable unused at the moment
+
         std::vector<bool> b = {true, false};
 
         std::random_device rd;
@@ -22,7 +23,7 @@ class MotorControlImpl final : public MotorControl:Service {
         bool loaded = v[dist(engine)];
         float theta = floats(engine);
         float phi = floats(engine);
-
+        std::cout << "Canoninfo Request: " << request << " Response: " <<  loaded << " " << theta << " " phi;
         info->set_loaded(loaded);
         info->set_coords(Coordinates(phi,theta)); 
         return grpc::Status::OK;
@@ -31,7 +32,36 @@ class MotorControlImpl final : public MotorControl:Service {
 
     }
 
-    //now do the other rpc
+    grpc::Status SetCannonPosition(grpc::ServerContext* context, const Coordinates* coords,
+                               MotorControlResponse * resp) override {
+ 
+        
+        std::cout << "Canon coords request" << coords;
+        resp->set_accepted(true);
 
-    grpc::Status
+        return grpc::Status::OK;
+        //Do I have to use the mutable thing from tutorial and copyfrom 
+        //(see getFeature from routguide)
+
+    }
+
+
+}
+
+void RunServer() {
+  std::string server_address("0.0.0.0:50051");
+  RouteGuideImpl service();
+
+  grpc::ServerBuilder builder;
+  builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+  builder.RegisterService(&service);
+  std::unique_ptr<Server> server(builder.BuildAndStart());
+  std::cout << "Server listening on " << server_address << std::endl;
+  server->Wait();
+}
+
+int main(int argc, char** argv) {
+  RunServer();
+
+  return 0;
 }

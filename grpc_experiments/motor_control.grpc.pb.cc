@@ -16,8 +16,6 @@
 
 static const char* MotorControl_method_names[] = {
   "/MotorControl/SetCannonPosition",
-  "/MotorControl/FireCannon",
-  "/MotorControl/LoadCannon",
   "/MotorControl/GetCannonInfo",
 };
 
@@ -28,56 +26,30 @@ std::unique_ptr< MotorControl::Stub> MotorControl::NewStub(const std::shared_ptr
 
 MotorControl::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_SetCannonPosition_(MotorControl_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_FireCannon_(MotorControl_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_LoadCannon_(MotorControl_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetCannonInfo_(MotorControl_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetCannonInfo_(MotorControl_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status MotorControl::Stub::SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::Status* response) {
+::grpc::Status MotorControl::Stub::SetCannonPosition(::grpc::ClientContext* context, const ::Coordinates& request, ::MotorControlResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetCannonPosition_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_SetCannonPosition_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::MotorControlResponse>* MotorControl::Stub::AsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::MotorControlResponse>::Create(channel_.get(), cq, rpcmethod_SetCannonPosition_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_SetCannonPosition_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::MotorControlResponse>* MotorControl::Stub::PrepareAsyncSetCannonPositionRaw(::grpc::ClientContext* context, const ::Coordinates& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::MotorControlResponse>::Create(channel_.get(), cq, rpcmethod_SetCannonPosition_, context, request, false);
 }
 
-::grpc::Status MotorControl::Stub::FireCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_FireCannon_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::AsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_FireCannon_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::PrepareAsyncFireCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_FireCannon_, context, request, false);
-}
-
-::grpc::Status MotorControl::Stub::LoadCannon(::grpc::ClientContext* context, const ::Request& request, ::Status* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_LoadCannon_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::AsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_LoadCannon_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::Status>* MotorControl::Stub::PrepareAsyncLoadCannonRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Status>::Create(channel_.get(), cq, rpcmethod_LoadCannon_, context, request, false);
-}
-
-::grpc::Status MotorControl::Stub::GetCannonInfo(::grpc::ClientContext* context, const ::Request& request, ::CannonInfo* response) {
+::grpc::Status MotorControl::Stub::GetCannonInfo(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::CannonInfo* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetCannonInfo_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::CannonInfo>* MotorControl::Stub::AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::CannonInfo>* MotorControl::Stub::AsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::CannonInfo>::Create(channel_.get(), cq, rpcmethod_GetCannonInfo_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::CannonInfo>* MotorControl::Stub::PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::Request& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::CannonInfo>* MotorControl::Stub::PrepareAsyncGetCannonInfoRaw(::grpc::ClientContext* context, const ::MotorControlRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::CannonInfo>::Create(channel_.get(), cq, rpcmethod_GetCannonInfo_, context, request, false);
 }
 
@@ -85,50 +57,26 @@ MotorControl::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MotorControl_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::Coordinates, ::Status>(
+      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::Coordinates, ::MotorControlResponse>(
           std::mem_fn(&MotorControl::Service::SetCannonPosition), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MotorControl_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::Request, ::Status>(
-          std::mem_fn(&MotorControl::Service::FireCannon), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      MotorControl_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::Request, ::Status>(
-          std::mem_fn(&MotorControl::Service::LoadCannon), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      MotorControl_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::Request, ::CannonInfo>(
+      new ::grpc::internal::RpcMethodHandler< MotorControl::Service, ::MotorControlRequest, ::CannonInfo>(
           std::mem_fn(&MotorControl::Service::GetCannonInfo), this)));
 }
 
 MotorControl::Service::~Service() {
 }
 
-::grpc::Status MotorControl::Service::SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::Status* response) {
+::grpc::Status MotorControl::Service::SetCannonPosition(::grpc::ServerContext* context, const ::Coordinates* request, ::MotorControlResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status MotorControl::Service::FireCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status MotorControl::Service::LoadCannon(::grpc::ServerContext* context, const ::Request* request, ::Status* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status MotorControl::Service::GetCannonInfo(::grpc::ServerContext* context, const ::Request* request, ::CannonInfo* response) {
+::grpc::Status MotorControl::Service::GetCannonInfo(::grpc::ServerContext* context, const ::MotorControlRequest* request, ::CannonInfo* response) {
   (void) context;
   (void) request;
   (void) response;

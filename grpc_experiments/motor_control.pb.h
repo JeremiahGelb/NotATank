@@ -44,17 +44,17 @@ struct TableStruct {
 void AddDescriptors();
 void InitDefaultsCoordinatesImpl();
 void InitDefaultsCoordinates();
-void InitDefaultsStatusImpl();
-void InitDefaultsStatus();
 void InitDefaultsCannonInfoImpl();
 void InitDefaultsCannonInfo();
-void InitDefaultsRequestImpl();
-void InitDefaultsRequest();
+void InitDefaultsMotorControlResponseImpl();
+void InitDefaultsMotorControlResponse();
+void InitDefaultsMotorControlRequestImpl();
+void InitDefaultsMotorControlRequest();
 inline void InitDefaults() {
   InitDefaultsCoordinates();
-  InitDefaultsStatus();
   InitDefaultsCannonInfo();
-  InitDefaultsRequest();
+  InitDefaultsMotorControlResponse();
+  InitDefaultsMotorControlRequest();
 }
 }  // namespace protobuf_motor_5fcontrol_2eproto
 class CannonInfo;
@@ -63,12 +63,12 @@ extern CannonInfoDefaultTypeInternal _CannonInfo_default_instance_;
 class Coordinates;
 class CoordinatesDefaultTypeInternal;
 extern CoordinatesDefaultTypeInternal _Coordinates_default_instance_;
-class Request;
-class RequestDefaultTypeInternal;
-extern RequestDefaultTypeInternal _Request_default_instance_;
-class Status;
-class StatusDefaultTypeInternal;
-extern StatusDefaultTypeInternal _Status_default_instance_;
+class MotorControlRequest;
+class MotorControlRequestDefaultTypeInternal;
+extern MotorControlRequestDefaultTypeInternal _MotorControlRequest_default_instance_;
+class MotorControlResponse;
+class MotorControlResponseDefaultTypeInternal;
+extern MotorControlResponseDefaultTypeInternal _MotorControlResponse_default_instance_;
 
 // ===================================================================
 
@@ -178,105 +178,6 @@ class Coordinates : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
-class Status : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Status) */ {
- public:
-  Status();
-  virtual ~Status();
-
-  Status(const Status& from);
-
-  inline Status& operator=(const Status& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  Status(Status&& from) noexcept
-    : Status() {
-    *this = ::std::move(from);
-  }
-
-  inline Status& operator=(Status&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Status& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Status* internal_default_instance() {
-    return reinterpret_cast<const Status*>(
-               &_Status_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(Status* other);
-  friend void swap(Status& a, Status& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline Status* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  Status* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Status& from);
-  void MergeFrom(const Status& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Status* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // int32 status_code = 1;
-  void clear_status_code();
-  static const int kStatusCodeFieldNumber = 1;
-  ::google::protobuf::int32 status_code() const;
-  void set_status_code(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:Status)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 status_code_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_motor_5fcontrol_2eproto::TableStruct;
-  friend void ::protobuf_motor_5fcontrol_2eproto::InitDefaultsStatusImpl();
-};
-// -------------------------------------------------------------------
-
 class CannonInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CannonInfo) */ {
  public:
   CannonInfo();
@@ -312,7 +213,7 @@ class CannonInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_CannonInfo_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    1;
 
   void Swap(CannonInfo* other);
   friend void swap(CannonInfo& a, CannonInfo& b) {
@@ -386,24 +287,24 @@ class CannonInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
-class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Request) */ {
+class MotorControlResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MotorControlResponse) */ {
  public:
-  Request();
-  virtual ~Request();
+  MotorControlResponse();
+  virtual ~MotorControlResponse();
 
-  Request(const Request& from);
+  MotorControlResponse(const MotorControlResponse& from);
 
-  inline Request& operator=(const Request& from) {
+  inline MotorControlResponse& operator=(const MotorControlResponse& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Request(Request&& from) noexcept
-    : Request() {
+  MotorControlResponse(MotorControlResponse&& from) noexcept
+    : MotorControlResponse() {
     *this = ::std::move(from);
   }
 
-  inline Request& operator=(Request&& from) noexcept {
+  inline MotorControlResponse& operator=(MotorControlResponse&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -413,30 +314,30 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Request& default_instance();
+  static const MotorControlResponse& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Request* internal_default_instance() {
-    return reinterpret_cast<const Request*>(
-               &_Request_default_instance_);
+  static inline const MotorControlResponse* internal_default_instance() {
+    return reinterpret_cast<const MotorControlResponse*>(
+               &_MotorControlResponse_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    2;
 
-  void Swap(Request* other);
-  friend void swap(Request& a, Request& b) {
+  void Swap(MotorControlResponse* other);
+  friend void swap(MotorControlResponse& a, MotorControlResponse& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Request* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline MotorControlResponse* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Request* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  MotorControlResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Request& from);
-  void MergeFrom(const Request& from);
+  void CopyFrom(const MotorControlResponse& from);
+  void MergeFrom(const MotorControlResponse& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -452,7 +353,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Request* other);
+  void InternalSwap(MotorControlResponse* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -468,20 +369,119 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // bool please = 1;
-  void clear_please();
-  static const int kPleaseFieldNumber = 1;
-  bool please() const;
-  void set_please(bool value);
+  // bool accepted = 1;
+  void clear_accepted();
+  static const int kAcceptedFieldNumber = 1;
+  bool accepted() const;
+  void set_accepted(bool value);
 
-  // @@protoc_insertion_point(class_scope:Request)
+  // @@protoc_insertion_point(class_scope:MotorControlResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool please_;
+  bool accepted_;
   mutable int _cached_size_;
   friend struct ::protobuf_motor_5fcontrol_2eproto::TableStruct;
-  friend void ::protobuf_motor_5fcontrol_2eproto::InitDefaultsRequestImpl();
+  friend void ::protobuf_motor_5fcontrol_2eproto::InitDefaultsMotorControlResponseImpl();
+};
+// -------------------------------------------------------------------
+
+class MotorControlRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MotorControlRequest) */ {
+ public:
+  MotorControlRequest();
+  virtual ~MotorControlRequest();
+
+  MotorControlRequest(const MotorControlRequest& from);
+
+  inline MotorControlRequest& operator=(const MotorControlRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  MotorControlRequest(MotorControlRequest&& from) noexcept
+    : MotorControlRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline MotorControlRequest& operator=(MotorControlRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MotorControlRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const MotorControlRequest* internal_default_instance() {
+    return reinterpret_cast<const MotorControlRequest*>(
+               &_MotorControlRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(MotorControlRequest* other);
+  friend void swap(MotorControlRequest& a, MotorControlRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MotorControlRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  MotorControlRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const MotorControlRequest& from);
+  void MergeFrom(const MotorControlRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(MotorControlRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool is_authorized = 1;
+  void clear_is_authorized();
+  static const int kIsAuthorizedFieldNumber = 1;
+  bool is_authorized() const;
+  void set_is_authorized(bool value);
+
+  // @@protoc_insertion_point(class_scope:MotorControlRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool is_authorized_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_motor_5fcontrol_2eproto::TableStruct;
+  friend void ::protobuf_motor_5fcontrol_2eproto::InitDefaultsMotorControlRequestImpl();
 };
 // ===================================================================
 
@@ -520,24 +520,6 @@ inline void Coordinates::set_phi(float value) {
   
   phi_ = value;
   // @@protoc_insertion_point(field_set:Coordinates.phi)
-}
-
-// -------------------------------------------------------------------
-
-// Status
-
-// int32 status_code = 1;
-inline void Status::clear_status_code() {
-  status_code_ = 0;
-}
-inline ::google::protobuf::int32 Status::status_code() const {
-  // @@protoc_insertion_point(field_get:Status.status_code)
-  return status_code_;
-}
-inline void Status::set_status_code(::google::protobuf::int32 value) {
-  
-  status_code_ = value;
-  // @@protoc_insertion_point(field_set:Status.status_code)
 }
 
 // -------------------------------------------------------------------
@@ -610,20 +592,38 @@ inline void CannonInfo::set_loaded(bool value) {
 
 // -------------------------------------------------------------------
 
-// Request
+// MotorControlResponse
 
-// bool please = 1;
-inline void Request::clear_please() {
-  please_ = false;
+// bool accepted = 1;
+inline void MotorControlResponse::clear_accepted() {
+  accepted_ = false;
 }
-inline bool Request::please() const {
-  // @@protoc_insertion_point(field_get:Request.please)
-  return please_;
+inline bool MotorControlResponse::accepted() const {
+  // @@protoc_insertion_point(field_get:MotorControlResponse.accepted)
+  return accepted_;
 }
-inline void Request::set_please(bool value) {
+inline void MotorControlResponse::set_accepted(bool value) {
   
-  please_ = value;
-  // @@protoc_insertion_point(field_set:Request.please)
+  accepted_ = value;
+  // @@protoc_insertion_point(field_set:MotorControlResponse.accepted)
+}
+
+// -------------------------------------------------------------------
+
+// MotorControlRequest
+
+// bool is_authorized = 1;
+inline void MotorControlRequest::clear_is_authorized() {
+  is_authorized_ = false;
+}
+inline bool MotorControlRequest::is_authorized() const {
+  // @@protoc_insertion_point(field_get:MotorControlRequest.is_authorized)
+  return is_authorized_;
+}
+inline void MotorControlRequest::set_is_authorized(bool value) {
+  
+  is_authorized_ = value;
+  // @@protoc_insertion_point(field_set:MotorControlRequest.is_authorized)
 }
 
 #ifdef __GNUC__
