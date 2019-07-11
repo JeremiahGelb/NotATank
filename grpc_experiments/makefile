@@ -38,10 +38,10 @@ vpath %.proto $(PROTOS_PATH)
 
 all: system-check motor_control_server
 
-route_guide_client: route_guide.pb.o route_guide.grpc.pb.o route_guide_client.o helper.o
+route_guide_client: route_guide.pb.o route_guide.grpc.pb.o route_guide_client.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
-motor_contro_server: motor_control.pb.o motor_control.grpc.pb.o motor_control_server.o helper.o
+motor_contro_server: motor_control.pb.o motor_control.grpc.pb.o motor_control_server.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 %.grpc.pb.cc: %.proto
