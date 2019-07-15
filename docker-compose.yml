@@ -4,3 +4,8 @@ services:
     image: grpc/cxx
     volumes:
       - ./:/src
+
+  grpcpython:
+    image: grpc/python
+    volumes:
+      - ./:/src
