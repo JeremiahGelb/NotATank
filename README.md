@@ -19,8 +19,10 @@ Here's how to fail to build what I have so far
 ```bash
 >>> get into the docker
 >>> go to src directory
+>>> go to grpc expiriments diretory
 ./build.sh
 make
+./motor_control_server
 ```
 
 
